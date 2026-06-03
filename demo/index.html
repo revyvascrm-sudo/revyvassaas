@@ -1,0 +1,1042 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revyvas CRM | Demonstração</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="src/styles.css?v=20260602-dual-mode-1" />
+  </head>
+  <body class="app-v2 demo-v2">
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Navegação principal">
+        <div class="brand">
+          <div class="brand-mark"><img src="assets/revyvas-monogram-clean.png" alt="Revyvas" /></div>
+          <div>
+            <strong>Revyvas CRM</strong>
+            <span>Clínica Lumina</span>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Módulos">
+          <button class="active" type="button" data-view-target="dashboard">
+            <span class="nav-icon pulse-icon"></span>
+            Operação
+          </button>
+          <button type="button" data-view-target="patients">
+            <span class="nav-icon client-icon"></span>
+            Pacientes
+          </button>
+          <button type="button" data-view-target="automations">
+            <span class="nav-icon message-icon"></span>
+            Mensagens
+          </button>
+          <button type="button" data-view-target="agenda">
+            <span class="nav-icon agenda-icon"></span>
+            Agenda
+          </button>
+          <button type="button" data-view-target="packages">
+            <span class="nav-icon package-icon"></span>
+            Pacotes
+          </button>
+          <button type="button" data-view-target="metrics">
+            <span class="nav-icon revenue-icon"></span>
+            Receita
+          </button>
+          <button type="button" data-view-target="flows">
+            <span class="nav-icon flow-icon"></span>
+            Protocolos
+          </button>
+          <button type="button" data-view-target="settings">
+            <span class="nav-icon settings-icon"></span>
+            Ajustes
+          </button>
+        </nav>
+
+        <section class="concierge-card">
+          <span class="panel-kicker">Concierge automático</span>
+          <strong>21 protocolos ativos</strong>
+          <p>Retorno, renovação e cuidado clínico conectados ao WhatsApp.</p>
+          <div class="progress-track" aria-label="Meta mensal em 74 por cento">
+            <span style="width: 74%"></span>
+          </div>
+          <small>R$ 31.420 recuperáveis nesta quinzena.</small>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Domingo, 24 de maio</p>
+            <h1>Retenção premium para clínicas de estética</h1>
+          </div>
+          <div class="topbar-actions">
+            <span class="sync-pill" id="syncStatus">Preparando operação...</span>
+            <label class="role-field" aria-label="Perfil ativo">
+              <span>Perfil</span>
+              <select id="roleSelect">
+                <option value="owner">Gestora</option>
+                <option value="reception">Recepção</option>
+                <option value="commercial">Comercial</option>
+                <option value="cl?nical">Clínico</option>
+              </select>
+            </label>
+            <button class="icon-button" type="button" aria-label="Buscar">
+              <span class="icon search-icon"></span>
+            </button>
+            <button class="icon-button has-badge" type="button" aria-label="Notificações">
+              <span class="icon bell-icon"></span>
+            </button>
+            <button class="primary-button" id="newFlowButton" type="button" data-modal="flow">
+              <span class="button-icon plus-icon"></span>
+              Novo protocolo
+            </button>
+            <button class="secondary-button compact-button" id="logoutButton" type="button">Sair</button>
+          </div>
+        </header>
+
+        <section class="view active" id="dashboardView" data-view="dashboard">
+          <section class="studio-hero" aria-label="Resumo premium da operação">
+            <div class="hero-copy">
+              <p class="eyebrow">Jornada pós-procedimento e recorrência</p>
+              <h2>36 pacientes precisam de uma ação cuidadosa hoje</h2>
+              <p>
+                Priorize retornos, renovações e sinais clínicos sem parecer venda automática.
+                Cada mensagem carrega contexto, risco e próxima melhor ação.
+              </p>
+              <div class="hero-actions">
+                <button class="primary-button deep" type="button" data-copy-next-message>
+                  <span class="button-icon send-icon"></span>
+                  Copiar próxima mensagem
+                </button>
+                <button class="secondary-button" type="button" data-view-target="flows">Ajustar protocolos</button>
+              </div>
+            </div>
+
+            <div class="treatment-card" aria-label="Mapa de cuidado">
+              <div class="treatment-header">
+                <span>Protocolo ativo</span>
+                <strong>Laser CO2 D+2</strong>
+              </div>
+              <div class="face-map" aria-hidden="true">
+                <span class="point one"></span>
+                <span class="point two"></span>
+                <span class="point three"></span>
+              </div>
+              <div class="treatment-steps">
+                <span><b>1</b> Foto em luz natural</span>
+                <span><b>2</b> Validar sinais de alerta</span>
+                <span><b>3</b> Agendar retorno se seguro</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="money-table-card" aria-label="Dinheiro na mesa">
+            <div>
+              <p class="eyebrow">Dinheiro na mesa</p>
+              <h3><span id="moneyTableValue">R$ 31.420</span> em oportunidades abertas</h3>
+              <p>Pacotes vencendo, retornos sem confirmação e pacientes sem resposta que a equipe pode recuperar hoje.</p>
+            </div>
+            <div class="money-table-actions">
+              <button class="primary-button deep" id="copyNextMessageButton" type="button">
+                <span class="button-icon send-icon"></span>
+                Copiar próxima mensagem
+              </button>
+              <span class="status-pill">Envio manual via WhatsApp</span>
+            </div>
+          </section>
+
+          <section class="metrics-grid" aria-label="Indicadores">
+            <article class="metric-card">
+              <span>Receita recuperável</span>
+              <strong id="metricRecoverable">R$ 31.420</strong>
+              <small>Pacotes vencendo em até 14 dias</small>
+            </article>
+            <article class="metric-card">
+              <span>Pós-procedimento</span>
+              <strong id="metricPostProcedure">19</strong>
+              <small>Mensagens em janela crítica</small>
+            </article>
+            <article class="metric-card">
+              <span>Taxa de retorno</span>
+              <strong id="metricReturnRate">74%</strong>
+              <small>+11% versus mês anterior</small>
+            </article>
+            <article class="metric-card">
+              <span>Sem resposta</span>
+              <strong id="metricNoResponse">8</strong>
+              <small>Precisam de abordagem humana</small>
+            </article>
+          </section>
+
+          <section class="main-grid">
+            <section class="queue-panel" aria-label="Fila de pacientes">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Prioridade de contato</p>
+                  <h3>Pacientes para recuperar hoje</h3>
+                </div>
+                <div class="queue-tools">
+                  <label class="search-field">
+                    <span class="icon search-icon"></span>
+                    <input id="searchInput" type="search" placeholder="Buscar paciente ou procedimento" />
+                  </label>
+                  <div class="segmented-control" role="tablist" aria-label="Filtro da fila">
+                    <button class="active" type="button" data-filter="todos">Todos</button>
+                    <button type="button" data-filter="retorno">Retorno</button>
+                <button type="button" data-filter="renovacao">Renovação</button>
+                <button type="button" data-filter="pos">Pós</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="patient-list" id="patientList"></div>
+            </section>
+
+            <aside class="detail-panel" aria-label="Detalhes do paciente">
+              <div class="section-heading compact-heading">
+                <div>
+                  <p class="eyebrow">Próxima melhor ação</p>
+                  <h3 id="detailName">Selecione um paciente</h3>
+                </div>
+                <span class="status-pill" id="detailStatus">Pronto</span>
+              </div>
+
+              <div class="detail-stats">
+                <div>
+                  <span>Risco</span>
+                  <strong id="detailRisk">--</strong>
+                </div>
+                <div>
+                  <span>Valor</span>
+                  <strong id="detailValue">--</strong>
+                </div>
+                <div>
+                  <span>Tempo de resposta</span>
+                  <strong id="detailSla">--</strong>
+                </div>
+              </div>
+
+              <div class="care-card">
+                <span class="panel-kicker">Contexto clínico e comercial</span>
+                <p id="detailHistory">Escolha alguem da fila para ver contexto, risco e mensagem recomendada.</p>
+              </div>
+
+              <div class="whatsapp-status-card">
+                <div class="message-header">
+                  <span>Status WhatsApp</span>
+                  <span id="whatsappStatusLabel">Aguardando</span>
+                </div>
+                <div class="delivery-steps" id="deliverySteps"></div>
+              </div>
+
+              <div class="protocol-card">
+                <div class="message-header">
+                  <span>Protocolo recomendado</span>
+                  <span id="detailTone">Tom consultivo</span>
+                </div>
+                <ol id="protocolList"></ol>
+              </div>
+
+              <div class="message-box">
+                <div class="message-header">
+                  <span>Mensagem sugerida</span>
+                  <div class="message-actions">
+                    <button id="copyButton" type="button">Copiar para WhatsApp</button>
+                    <button id="sendButton" type="button">Marcar enviado</button>
+                  </div>
+                </div>
+                <textarea id="messageText" rows="8" aria-label="Mensagem sugerida"></textarea>
+              </div>
+
+              <div class="automation-strip">
+                <div>
+                  <strong>Rotina de contato</strong>
+                  <span id="detailAutomation">Aguardando seleção</span>
+                </div>
+                <label class="toggle" aria-label="Ativar automação">
+                  <input type="checkbox" checked />
+                  <span></span>
+                </label>
+              </div>
+            </aside>
+          </section>
+        </section>
+
+        <section class="view" id="flowsView" data-view="flows">
+          <section class="flows-hero" aria-label="Configuração de fluxos">
+            <div>
+              <p class="eyebrow">Playbooks por procedimento</p>
+              <h2>Configure o cuidado que acontece depois da sessão</h2>
+              <p>
+                Cada protocolo combina janela clínica, WhatsApp, regra comercial e transferência humana.
+                O objetivo é recuperar receita sem perder a sensação de atendimento premium.
+              </p>
+            </div>
+            <div class="flow-health">
+              <span>Saúde dos fluxos</span>
+              <strong>87%</strong>
+              <small>3 precisam de revisão de mensagem</small>
+            </div>
+          </section>
+
+          <section class="library-strip" aria-label="Biblioteca de procedimentos">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Biblioteca de procedimentos</p>
+                <h3>Modelos prontos para ativar</h3>
+              </div>
+              <span class="status-pill">10 protocolos</span>
+            </div>
+            <div class="library-chip-grid">
+              <button type="button" data-procedure-template="Botox D+15">Botox</button>
+              <button type="button" data-procedure-template="Preenchimento D+7">Preenchimento</button>
+              <button type="button" data-procedure-template="Limpeza de pele D+3">Limpeza de pele</button>
+              <button type="button" data-procedure-template="Peeling D+5">Peeling</button>
+              <button type="button" data-procedure-template="Laser D+2">Laser</button>
+              <button type="button" data-procedure-template="Depilacao mensal">Depilacao</button>
+              <button type="button" data-procedure-template="Bioestimulador D+30">Bioestimulador</button>
+              <button type="button" data-procedure-template="Harmonizacao D+7">Harmonizacao</button>
+              <button type="button" data-procedure-template="Massagem modeladora">Massagem/modeladora</button>
+              <button type="button" data-procedure-template="Drenagem renovacao">Drenagem</button>
+            </div>
+          </section>
+
+          <section class="flow-workbench">
+            <aside class="flow-library" aria-label="Biblioteca de protocolos">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Biblioteca</p>
+                  <h3>Procedimentos</h3>
+                </div>
+                <button class="message-header-action" type="button" data-modal="flow">Novo</button>
+              </div>
+              <div id="flowList" class="flow-list"></div>
+            </aside>
+
+            <section class="flow-editor" aria-label="Editor do protocolo">
+              <div class="section-heading compact-heading">
+                <div>
+                  <p class="eyebrow" id="flowCategory">Pos-procedimento</p>
+                  <h3 id="flowName">Laser CO2 fracionado</h3>
+                </div>
+                <span class="status-pill" id="flowStatus">Ativo</span>
+              </div>
+
+              <div class="flow-grid">
+                <div class="flow-stat">
+                  <span>Janela</span>
+                  <strong id="flowWindow">D+2</strong>
+                </div>
+                <div class="flow-stat">
+                  <span>Conversao</span>
+                  <strong id="flowConversion">31%</strong>
+                </div>
+                <div class="flow-stat">
+                  <span>Receita</span>
+                  <strong id="flowRevenue">R$ 8.900</strong>
+                </div>
+              </div>
+
+              <section class="flow-controls" aria-label="Controles do protocolo">
+                <div class="control-group">
+                  <label for="testPatientSelect">Paciente de teste</label>
+                  <select id="testPatientSelect">
+                    <option value="Marina">Marina Torres</option>
+                    <option value="Renata">Renata Alves</option>
+                    <option value="Carla">Carla Mendes</option>
+                    <option value="Juliana">Juliana Prado</option>
+                    <option value="Beatriz">Beatriz Lima</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label for="variantSelect">Variante</label>
+                  <select id="variantSelect">
+                    <option value="primary">Principal</option>
+                    <option value="followup">Follow-up</option>
+                    <option value="human">Transferência humana</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label for="slaSelect">Tempo de resposta</label>
+                  <select id="slaSelect">
+                    <option value="30 min">30 min</option>
+                    <option value="2h">2h</option>
+                    <option value="6h">6h</option>
+                    <option value="24h">24h</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label for="ownerSelect">Responsável</label>
+                  <select id="ownerSelect">
+                    <option value="Concierge">Concierge</option>
+                    <option value="Enfermagem">Enfermagem</option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Profissional">Profissional</option>
+                  </select>
+                </div>
+              </section>
+
+              <div class="journey-builder">
+                <div class="message-header">
+                  <span>Sequência automatizada</span>
+                  <button id="addStepButton" type="button">Adicionar etapa</button>
+                </div>
+                <div id="journeySteps" class="journey-steps"></div>
+              </div>
+
+              <div class="rule-grid automation-rule-grid">
+                <div class="rule-card">
+                  <span class="panel-kicker">Regra de transferência</span>
+                  <p id="flowEscalation">Transferir para humano se houver dor intensa, ardor progressivo ou foto fora do esperado.</p>
+                </div>
+                <div class="rule-card">
+                  <span class="panel-kicker">Oferta permitida</span>
+                  <p id="flowOffer">Só sugerir retorno depois da avaliação de segurança.</p>
+                </div>
+              </div>
+
+              <section class="quality-panel" aria-label="Checklist de qualidade">
+                <div class="message-header">
+                  <span>Checklist de qualidade</span>
+                  <strong id="qualityScore">0/5</strong>
+                </div>
+                <div class="quality-list" id="qualityList"></div>
+              </section>
+
+              <div class="whatsapp-preview-panel">
+                <div class="message-header">
+                  <span>Preview da mensagem</span>
+                  <span id="flowPreviewMeta">Marina - D+2</span>
+                </div>
+                <div class="preview-phone">
+                  <div class="preview-phone-header">
+                    <span class="wa-dot"></span>
+                    <strong>Clínica Lumina</strong>
+                    <small>agora</small>
+                  </div>
+                  <div class="preview-bubble" id="flowPreviewText"></div>
+                </div>
+              </div>
+
+              <div class="template-panel">
+                <div class="message-header">
+                  <span>Mensagem principal</span>
+                  <div class="message-actions">
+                    <button id="saveFlowButton" type="button">Salvar protocolo</button>
+                    <button id="previewFlowButton" type="button">Prever mensagem</button>
+                  </div>
+                </div>
+                <textarea id="flowTemplate" rows="7" aria-label="Template do protocolo"></textarea>
+              </div>
+
+              <section class="whatsapp-lab" aria-label="Simulador de WhatsApp">
+                <div class="message-header">
+                  <span>Laboratorio de mensagens</span>
+                  <div class="message-actions">
+                    <button id="simulateReplyButton" type="button">Simular resposta</button>
+                    <button id="simulateRiskButton" type="button">Simular risco</button>
+                  </div>
+                </div>
+                <div class="lab-controls">
+                  <label>
+                    <span>Paciente</span>
+                    <select id="waPatientSelect"></select>
+                  </label>
+                  <label>
+                    <span>Template</span>
+                    <select id="waTemplateSelect"></select>
+                  </label>
+                </div>
+                <div class="preview-phone compact-phone">
+                  <div class="preview-phone-header">
+                    <span class="wa-dot"></span>
+                    <strong id="waPreviewClinic">Clínica Lumina</strong>
+                    <small id="waPreviewMeta">agora</small>
+                  </div>
+                  <div class="preview-bubble" id="waPreviewText"></div>
+                </div>
+              </section>
+            </section>
+          </section>
+        </section>
+
+        <section class="view" id="patientsView" data-view="patients">
+          <section class="crm-hero" aria-label="CRM de pacientes">
+            <div>
+              <p class="eyebrow">CRM de pacientes</p>
+              <h2>Histórico clínico, pacotes e WhatsApp no mesmo contexto</h2>
+              <p>
+                A ficha do paciente conecta procedimentos, retorno, renovação, valor em risco e conversa.
+                Assim a equipe sabe quando cuidar, vender ou transferir para atendimento humano.
+              </p>
+            </div>
+            <div class="crm-summary">
+              <span>Pacientes ativos</span>
+              <strong>1.248</strong>
+              <small>312 com pacote recorrente</small>
+            </div>
+          </section>
+
+          <section class="crm-workbench">
+            <aside class="crm-list-panel" aria-label="Lista de pacientes">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Base priorizada</p>
+                  <h3>Pacientes</h3>
+                </div>
+                <button class="message-header-action" type="button" data-modal="patient">Novo</button>
+              </div>
+              <div class="crm-toolbar">
+                <label class="search-field compact-search">
+                  <span class="icon search-icon"></span>
+                  <input id="crmSearchInput" type="search" placeholder="Buscar no CRM" />
+                </label>
+                <select id="crmSegmentFilter" aria-label="Filtrar segmento">
+                  <option value="todos">Todos os segmentos</option>
+                  <option value="pos">Pós-procedimento</option>
+                  <option value="renovacao">Renovação</option>
+                  <option value="retorno">Retorno</option>
+                  <option value="risco">Risco</option>
+                </select>
+              </div>
+              <div class="crm-patient-list" id="crmPatientList"></div>
+            </aside>
+
+            <section class="crm-record-panel" aria-label="Ficha do paciente">
+              <div class="section-heading compact-heading">
+                <div>
+                  <p class="eyebrow" id="crmSegment">Recorrencia</p>
+                  <h3 id="crmName">Paciente</h3>
+                </div>
+                <span class="status-pill" id="crmStatus">Ativo</span>
+              </div>
+
+              <div class="record-grid">
+                <div><span>Telefone</span><strong id="crmPhone">--</strong></div>
+                <div><span>LTV</span><strong id="crmLtv">--</strong></div>
+                <div><span>Pacote</span><strong id="crmPackage">--</strong></div>
+                <div><span>Próximo passo</span><strong id="crmNext">--</strong></div>
+              </div>
+
+              <div class="tag-cloud" id="crmTags"></div>
+              <div class="record-actions">
+                <button type="button" id="openPatientAgendaButton">Abrir agenda</button>
+                <button type="button" id="openPatientPackageButton">Abrir pacote</button>
+                <button type="button" id="markHumanTouchButton">Marcar contato humano</button>
+                <button type="button" id="registerReplyButton">Registrar resposta</button>
+                <button type="button" id="resolvePatientButton">Marcar como resolvido</button>
+                <button type="button" id="createRenewalOpportunityButton">Criar renovacao</button>
+                <button type="button" id="addPatientObservationButton">Adicionar observacao</button>
+              </div>
+
+              <div class="record-two-col">
+                <article class="record-card">
+                  <div class="message-header">
+                    <span>Linha do tempo</span>
+                    <button id="addNoteButton" type="button">Adicionar nota</button>
+                  </div>
+                  <div class="timeline-list" id="crmTimeline"></div>
+                </article>
+
+                <article class="record-card">
+                  <div class="message-header">
+                    <span>WhatsApp</span>
+                    <button id="crmCopyButton" type="button">Copiar sugestão</button>
+                  </div>
+                  <div class="conversation-list" id="crmConversation"></div>
+                </article>
+              </div>
+            </section>
+          </section>
+        </section>
+
+        <section class="view" id="automationsView" data-view="automations">
+          <section class="automation-hero" aria-label="Motor de automações">
+            <div>
+              <p class="eyebrow">Motor de automações</p>
+              <h2>Regras para WhatsApp, parada e transferência humana</h2>
+              <p>
+                Configure gatilhos, tentativas, responsável e condições de parada para cada jornada.
+                A automação deve proteger a experiência premium e acionar a equipe na hora certa.
+              </p>
+            </div>
+            <div class="crm-summary">
+              <span>Execuções hoje</span>
+              <strong>186</strong>
+              <small>14 transferidas para humano</small>
+            </div>
+          </section>
+
+          <section class="library-strip" aria-label="Biblioteca de mensagens">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Biblioteca de mensagens</p>
+                <h3>Templates prontos para WhatsApp</h3>
+              </div>
+              <span class="status-pill">Envio manual via WhatsApp</span>
+            </div>
+            <div class="message-template-grid">
+              <button type="button" data-message-template="D+1: Oi, {nome}! Passando para acompanhar como voce esta nas primeiras 24h. Me conte como esta se sentindo e se teve algum desconforto fora do esperado.">D+1</button>
+              <button type="button" data-message-template="D+2: Oi, {nome}! Pode me enviar uma foto em luz natural para acompanharmos sua evolucao com cuidado?">D+2</button>
+              <button type="button" data-message-template="D+7: Oi, {nome}! Uma semana depois do procedimento, queria saber como voce esta percebendo o resultado e se ficou alguma duvida.">D+7</button>
+              <button type="button" data-message-template="D+15: Oi, {nome}! Ja estamos na janela ideal para seu retorno. Tenho dois horarios para avaliarmos o resultado com calma.">D+15</button>
+              <button type="button" data-message-template="D+30: Oi, {nome}! Passando para acompanhar seu resultado de 30 dias e organizar o proximo passo do seu cuidado.">D+30</button>
+              <button type="button" data-message-template="Pacote vencendo: Oi, {nome}! Seu pacote est? chegando ao fim e podemos reservar a continuidade para voc? n?o perder o ritmo do resultado.">Pacote vencendo</button>
+              <button type="button" data-message-template="Paciente sumido: Oi, {nome}! Notei que nao conseguimos nos falar. Queria entender como voce esta e se posso ajudar em algo antes do proximo atendimento.">Paciente sumido</button>
+              <button type="button" data-message-template="Pós-venda: Oi, {nome}! Obrigada por confiar na clínica. Queremos acompanhar sua experiência e garantir que tudo esteja evoluindo bem.">Pós-venda</button>
+              <button type="button" data-message-template="Indicacao: Oi, {nome}! Se alguem proximo seu tambem busca esse cuidado, posso orientar com carinho e explicar os melhores caminhos.">Indicacao</button>
+            </div>
+          </section>
+
+          <section class="automation-workbench">
+            <aside class="automation-list-panel" aria-label="Regras de automação">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Regras ativas</p>
+                  <h3>Rotinas de contato</h3>
+                </div>
+                <button class="message-header-action" type="button" data-modal="rule">Nova</button>
+              </div>
+              <div class="automation-rule-list" id="automationRuleList"></div>
+            </aside>
+
+            <section class="automation-editor-panel" aria-label="Editor de automação">
+              <div class="section-heading compact-heading">
+                <div>
+                  <p class="eyebrow" id="ruleType">WhatsApp</p>
+                  <h3 id="ruleName">Regra</h3>
+                </div>
+                <span class="status-pill" id="ruleStatus">Ativa</span>
+              </div>
+
+              <div class="rule-config-grid">
+                <div><span>Gatilho</span><strong id="ruleTrigger">--</strong></div>
+                <div><span>Parada</span><strong id="ruleStop">--</strong></div>
+                <div><span>Dono</span><strong id="ruleOwner">--</strong></div>
+                <div><span>Janela</span><strong id="ruleWindow">--</strong></div>
+              </div>
+
+              <div class="journey-builder">
+                <div class="message-header">
+                  <span>Tentativas</span>
+                  <button id="approveRuleButton" type="button">Aprovar regra</button>
+                </div>
+                <div class="journey-steps" id="ruleAttempts"></div>
+              </div>
+
+              <div class="rule-grid">
+                <div class="rule-card">
+                  <span class="panel-kicker">Condição de risco</span>
+                  <p id="ruleRisk">--</p>
+                </div>
+                <div class="rule-card">
+                  <span class="panel-kicker">Ação se responder</span>
+                  <p id="ruleResponse">--</p>
+                </div>
+              </div>
+            </section>
+          </section>
+        </section>
+
+        <section class="view" id="agendaView" data-view="agenda">
+          <section class="agenda-hero" aria-label="Agenda inteligente">
+            <div>
+              <p class="eyebrow">Agenda inteligente</p>
+              <h2>Retornos, revisões e encaixes priorizados pela jornada</h2>
+              <p>
+                Confirme horários com contexto clínico, status do WhatsApp e motivo de retorno.
+                A equipe vê o que precisa ser cuidado antes de abrir uma nova oferta.
+              </p>
+            </div>
+            <div class="crm-summary">
+              <span>Retornos sugeridos</span>
+              <strong id="agendaSuggestedCount">0</strong>
+              <small>janelas com maior chance de comparecimento</small>
+            </div>
+          </section>
+
+          <section class="agenda-workbench">
+            <aside class="agenda-list-panel" aria-label="Lista de horários sugeridos">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Próximas janelas</p>
+                  <h3>Agenda de retorno</h3>
+                </div>
+                <button class="message-header-action" type="button" data-modal="appointment">Novo</button>
+              </div>
+              <div class="quick-filter-row" aria-label="Filtros de agenda">
+                <button type="button">Hoje</button>
+                <button type="button">Amanha</button>
+                <button type="button">Semana</button>
+                <button type="button">Atrasados</button>
+                <button type="button">Sem confirmacao</button>
+                <button type="button">Faltaram</button>
+              </div>
+              <div class="agenda-slot-list" id="agendaSlotList"></div>
+            </aside>
+
+            <section class="agenda-detail-panel" aria-label="Detalhe do horário">
+              <div class="section-heading compact-heading">
+                <div>
+                  <p class="eyebrow" id="agendaProcedure">Procedimento</p>
+                  <h3 id="agendaPatientName">Paciente</h3>
+                </div>
+                <span class="status-pill" id="agendaStatus">Aguardando</span>
+              </div>
+
+              <div class="record-grid">
+                <div><span>Janela</span><strong id="agendaWindow">--</strong></div>
+                <div><span>Horário</span><strong id="agendaTime">--</strong></div>
+                <div><span>Responsável</span><strong id="agendaOwner">--</strong></div>
+                <div><span>WhatsApp</span><strong id="agendaChannel">--</strong></div>
+              </div>
+
+              <div class="inline-editor">
+                <label>
+                  <span>Status</span>
+                  <select id="agendaStatusSelect">
+                    <option value="Sugerido">Sugerido</option>
+                    <option value="Contato registrado">Contato registrado</option>
+                    <option value="Confirmado">Confirmado</option>
+                    <option value="Compareceu">Compareceu</option>
+                    <option value="Reagendar">Reagendar</option>
+                    <option value="Cancelado">Cancelado</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Responsável</span>
+                  <select id="agendaOwnerSelect">
+                    <option value="Concierge">Concierge</option>
+                    <option value="Recepção">Recepção</option>
+                    <option value="Enfermagem">Enfermagem</option>
+                    <option value="Profissional">Profissional</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Nova data</span>
+                  <input id="agendaDateInput" type="text" placeholder="Quarta, 27/05" />
+                </label>
+                <label>
+                  <span>Hora</span>
+                  <input id="agendaTimeInput" type="text" placeholder="15:30" />
+                </label>
+              </div>
+
+              <article class="record-card">
+                <div class="message-header">
+                  <span>Motivo do retorno</span>
+                  <div class="message-actions">
+                    <button id="confirmAppointmentButton" type="button">Confirmar</button>
+                    <button id="copyAppointmentButton" type="button">Copiar lembrete</button>
+                    <button id="sendAppointmentButton" type="button">Marcar como enviado</button>
+                    <button id="missAppointmentButton" type="button">Marcar falta</button>
+                    <button id="attendedAppointmentButton" type="button">Marcar compareceu</button>
+                    <button id="saveAppointmentButton" type="button">Salvar agenda</button>
+                    <button id="cancelAppointmentButton" type="button">Cancelar</button>
+                  </div>
+                </div>
+                <div class="agenda-reason">
+                  <p id="agendaReason">Selecione uma janela para ver a recomendação.</p>
+                </div>
+              </article>
+            </section>
+          </section>
+        </section>
+
+        <section class="view" id="packagesView" data-view="packages">
+          <section class="packages-hero" aria-label="Pacotes e renovação">
+            <div>
+              <p class="eyebrow">Pacotes e renovação</p>
+              <h2>Recorrência tratada como continuidade de resultado</h2>
+              <p>
+                Veja uso, valor em risco, vencimento e melhor abordagem para renovar sem parecer cobrança.
+                Cada pacote vira uma próxima ação conectada ao CRM.
+              </p>
+            </div>
+            <div class="crm-summary">
+              <span>Receita em renovação</span>
+              <strong id="packageRevenueSummary">R$ 0</strong>
+              <small>pacotes no fim do ciclo</small>
+            </div>
+          </section>
+
+          <section class="packages-workbench">
+            <aside class="package-list-panel" aria-label="Lista de pacotes">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Ciclos ativos</p>
+                  <h3>Pacotes</h3>
+                </div>
+                <button class="message-header-action" type="button" data-modal="package">Novo</button>
+              </div>
+              <div class="quick-filter-row" aria-label="Filtros de pacotes">
+                <button type="button">Vence em 7 dias</button>
+                <button type="button">Vence em 14 dias</button>
+                <button type="button">Sessoes finalizadas</button>
+                <button type="button">Renovacao quente</button>
+                <button type="button">Sem resposta</button>
+                <button type="button">Renovado</button>
+              </div>
+              <div class="package-list" id="packageList"></div>
+            </aside>
+
+            <section class="package-detail-panel" aria-label="Detalhe do pacote">
+              <div class="section-heading compact-heading">
+                <div>
+                  <p class="eyebrow" id="packageName">Pacote</p>
+                  <h3 id="packagePatientName">Paciente</h3>
+                </div>
+                <span class="status-pill" id="packageStatus">Ativo</span>
+              </div>
+
+              <div class="record-grid">
+                <div><span>Uso</span><strong id="packageProgress">--</strong></div>
+                <div><span>Valor</span><strong id="packageValue">--</strong></div>
+                <div><span>Renovação</span><strong id="packageRenewal">--</strong></div>
+                <div><span>Risco</span><strong id="packageRisk">--</strong></div>
+              </div>
+              <div class="inline-editor">
+                <label>
+                  <span>Usadas</span>
+                  <input id="packageUsedInput" type="number" min="0" />
+                </label>
+                <label>
+                  <span>Total</span>
+                  <input id="packageTotalInput" type="number" min="1" />
+                </label>
+                <label>
+                  <span>Vencimento</span>
+                  <input id="packageExpiryInput" type="text" placeholder="30/06" />
+                </label>
+                <label>
+                  <span>Condição</span>
+                  <input id="packageConditionInput" type="text" placeholder="2 sessões bônus" />
+                </label>
+              </div>
+
+              <article class="record-card">
+                <div class="message-header">
+                  <span>Plano de continuidade</span>
+                  <div class="message-actions">
+                    <button id="useSessionButton" type="button">Usar sessão</button>
+                    <button id="copyPackageProposalButton" type="button">Copiar proposta</button>
+                    <button id="renewPackageButton" type="button">Marcar renovado</button>
+                    <button id="partialRenewPackageButton" type="button">Renovação parcial</button>
+                    <button id="savePackageButton" type="button">Salvar pacote</button>
+                    <button id="pausePackageButton" type="button">Registrar recusa</button>
+                    <button id="packageFollowUpButton" type="button">Criar follow-up</button>
+                  </div>
+                </div>
+                <div class="package-plan">
+                  <div class="package-progress-bar" aria-label="Uso do pacote">
+                    <span id="packageProgressBar"></span>
+                  </div>
+                  <p id="packagePlanText">Selecione um pacote para ver a recomendação.</p>
+                </div>
+              </article>
+            </section>
+          </section>
+        </section>
+
+        <section class="view" id="metricsView" data-view="metrics">
+          <section class="metrics-hero" aria-label="Métricas comerciais">
+            <div>
+              <p class="eyebrow">Receita e retenção</p>
+              <h2>O que voltou para agenda, pacote e faturamento</h2>
+              <p>
+                Acompanhe receita recuperada, renovações previstas, retornos confirmados,
+                respostas por WhatsApp e risco de churn por procedimento.
+              </p>
+            </div>
+            <div class="crm-summary">
+              <span>Recuperado no mês</span>
+              <strong>R$ 48,7k</strong>
+              <small>+18% versus mês anterior</small>
+            </div>
+          </section>
+
+          <section class="revenue-grid">
+            <article class="metric-card"><span>Renovações previstas</span><strong id="revenueRenewals">R$ 84.000</strong><small>pacotes em janela quente</small></article>
+            <article class="metric-card"><span>Retornos agendados</span><strong id="revenueAppointments">112</strong><small>base elegível</small></article>
+            <article class="metric-card"><span>Resposta WhatsApp</span><strong id="revenueWhatsapp">63%</strong><small>respostas e agendamentos</small></article>
+            <article class="metric-card"><span>Churn em risco</span><strong id="revenueRisk">21</strong><small>Prioridade de concierge</small></article>
+          </section>
+
+          <section class="analytics-grid">
+            <article class="analytics-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Funil</p>
+                  <h3>Jornada comercial</h3>
+                </div>
+              </div>
+              <div class="funnel-list" id="funnelList"></div>
+            </article>
+
+            <article class="analytics-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Procedimentos</p>
+                  <h3>Performance por protocolo</h3>
+                </div>
+              </div>
+              <div class="procedure-list" id="procedureMetrics"></div>
+            </article>
+
+            <article class="analytics-panel wide">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Risco de churn</p>
+                  <h3>Pacientes que precisam de cuidado humano</h3>
+                </div>
+              </div>
+              <div class="risk-list" id="riskList"></div>
+            </article>
+          </section>
+        </section>
+
+        <section class="view" id="settingsView" data-view="settings">
+          <section class="settings-hero" aria-label="Configurações da clínica">
+            <div>
+              <p class="eyebrow">Clínica, equipe e consentimentos</p>
+              <h2>Operação pronta para clínica, equipe e dados reais</h2>
+              <p>
+                Ajuste identidade, horários, regras de retorno, permissões, backup local e checklist de qualidade.
+                Esta área fecha a base do produto antes de integrar backend e WhatsApp oficial.
+              </p>
+            </div>
+            <div class="crm-summary">
+              <span>Configuração da clínica</span>
+              <strong id="qaScoreSummary">0%</strong>
+              <small>checklist operacional</small>
+            </div>
+          </section>
+
+          <section class="onboarding-panel" aria-label="Onboarding da cl?nica">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Onboarding guiado</p>
+                <h3>Primeira configuração da clínica</h3>
+              </div>
+              <span class="status-pill">Produto vivo</span>
+            </div>
+            <div class="onboarding-grid">
+              <label><span>Nome da clínica</span><input id="onboardingClinicName" type="text" value="Clínica Lumina" /></label>
+              <label><span>WhatsApp principal</span><input id="onboardingWhatsapp" type="text" value="+55 65 99999-0000" /></label>
+              <label><span>Procedimentos oferecidos</span><input id="onboardingProcedures" type="text" value="Botox, laser, drenagem, limpeza de pele" /></label>
+              <label><span>Tipos de pacote</span><input id="onboardingPackages" type="text" value="Facial, corporal, recorrÃªncia mensal" /></label>
+              <label><span>Responsável pelo atendimento</span><input id="onboardingOwner" type="text" value="Concierge" /></label>
+              <label><span>Horários da clínica</span><input id="onboardingHours" type="text" value="Segunda a sexta, 8h às 19h" /></label>
+            </div>
+            <div class="data-actions">
+              <button id="saveOnboardingButton" type="button">Salvar onboarding</button>
+              <button class="secondary-button" type="button" data-view-target="flows">Ver protocolos sugeridos</button>
+            </div>
+          </section>
+
+          <section class="settings-grid">
+            <article class="settings-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Clínica</p>
+                  <h3>Identidade e operação</h3>
+                </div>
+                <button id="saveSettingsButton" type="button">Salvar</button>
+              </div>
+              <div class="inline-editor stacked-editor">
+                <label><span>Nome da clínica</span><input id="clinicNameInput" type="text" /></label>
+                <label><span>WhatsApp</span><input id="clinicWhatsappInput" type="text" /></label>
+                <label><span>Horário</span><input id="clinicHoursInput" type="text" /></label>
+                <label><span>Política de retorno</span><input id="clinicPolicyInput" type="text" /></label>
+              </div>
+            </article>
+
+            <article class="settings-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Perfis</p>
+                  <h3>Permissões simuladas</h3>
+                </div>
+              </div>
+              <div class="profile-grid" id="profileGrid"></div>
+            </article>
+
+            <article class="settings-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Dados</p>
+                  <h3>Dados da clínica</h3>
+                </div>
+              </div>
+              <div class="data-actions">
+                <button id="backupDataButton" type="button">Criar backup local</button>
+                <button id="restoreDemoButton" type="button">Restaurar exemplo</button>
+              </div>
+              <p class="settings-note" id="dataStatusText">Dados de trabalho salvos para a operacao da cl?nica.</p>
+            </article>
+
+            <article class="settings-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Integrações</p>
+                  <h3>Configuracao avancada</h3>
+                </div>
+              </div>
+              <div class="integration-actions">
+                <button id="testWhatsappIntegrationButton" type="button">Testar WhatsApp</button>
+                <button id="testCalendarIntegrationButton" type="button">Testar agenda</button>
+                <button id="testPaymentIntegrationButton" type="button">Gerar link de pagamento</button>
+              </div>
+              <p class="settings-note" id="integrationStatusText">Área técnica para conectar WhatsApp oficial, agenda e pagamentos quando a clínica estiver pronta.</p>
+            </article>
+
+            <article class="settings-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Qualidade</p>
+                  <h3>Checklist antes do teste</h3>
+                </div>
+              </div>
+              <div class="qa-list" id="qaList"></div>
+            </article>
+
+            <article class="settings-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">LGPD</p>
+                  <h3>Consentimento e auditoria</h3>
+                </div>
+              </div>
+              <div class="qa-list">
+                <span class="qa-item complete">Registrar consentimento para WhatsApp antes de automações.</span>
+                <span class="qa-item complete">Permitir exportação e remoção de dados da paciente.</span>
+                <span class="qa-item complete">Separar dados por clínica e papel da equipe.</span>
+                <span class="qa-item complete">Manter auditLog de integrações, agenda e alterações sensíveis.</span>
+              </div>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow" id="modalKicker">Cadastro</p>
+            <h3 id="modalTitle">Novo registro</h3>
+          </div>
+          <button class="icon-button" id="closeModalButton" type="button" aria-label="Fechar">×</button>
+        </div>
+        <form id="modalForm" class="modal-form"></form>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="src/app.js?v=20260602-dual-mode-1"></script>
+  </body>
+</html>

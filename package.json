@@ -1,0 +1,17 @@
+{
+  "name": "revyvas-crm",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SaaS para clínicas de estética focado em retorno, renovação de pacotes e pós-procedimento via WhatsApp.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check src/app.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.8"
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "tenants": {
+    "clinic-lumina": {
+      "id": "clinic-lumina",
+      "name": "Clínica Lumina",
+      "plan": "Reviva Pro",
+      "createdAt": "2026-06-02T18:36:14.615Z",
+      "integrations": {
+        "whatsapp": {
+          "mode": "sandbox",
+          "provider": "whatsapp_cloud_api",
+          "phoneNumberId": "sandbox-phone-lumina",
+          "businessAccountId": "sandbox-waba-lumina",
+          "status": "teste_ok",
+          "templates": [
+            "pos_cuidado",
+            "retorno_confirmacao",
+            "renovacao_pacote"
+          ]
+        },
+        "calendar": {
+          "mode": "sandbox",
+          "provider": "Google Calendar",
+          "calendarId": "",
+          "status": "sandbox"
+        },
+        "payments": {
+          "mode": "sandbox",
+          "provider": "Stripe/Mercado Pago",
+          "status": "sandbox"
+        }
+      },
+      "state": {
+        "revivaV2Patients": [
+          {
+            "id": 1,
+            "name": "Marina Torres",
+            "initials": "MT",
+            "type": "pos",
+            "tag": "Pós 48h",
+            "urgency": "alert",
+            "procedure": "Laser CO2 fracionado",
+            "next": "Pedir foto e checar sinais de alerta",
+            "status": "Janela crítica",
+            "automation": "D+2 laser facial",
+            "history": "Procedimento recente com sensibilidade relatada. Priorizar cuidado antes de oferta.",
+            "message": "Oi, Marina! Pode me enviar uma foto da pele em luz natural para acompanharmos sua recuperação?",
+            "risk": "Alto",
+            "value": "R$ 1.890",
+            "sla": "1h 20",
+            "score": 94,
+            "due": "Hoje, 14:30",
+            "tone": "Acolhedor",
+            "whatsappStage": "respondido",
+            "protocol": [
+              "Pedir foto",
+              "Checar sinais de alerta",
+              "Transferir se houver risco"
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Renata Alves",
+            "initials": "RA",
+            "type": "renovacao",
+            "tag": "Pacote vence",
+            "urgency": "warning",
+            "procedure": "Drenagem pós-operatória",
+            "next": "Oferecer renovação como continuidade",
+            "status": "Receita quente",
+            "automation": "Renovação com 2 sessões restantes",
+            "history": "Usou 8 de 10 sessões e tem alto comparecimento.",
+            "message": "Oi, Renata! Seu pacote está chegando ao fim. Quer ver as opções para manter a continuidade?",
+            "risk": "Médio",
+            "value": "R$ 2.400",
+            "sla": "3h",
+            "score": 86,
+            "due": "Hoje, 16:00",
+            "tone": "Comercial leve",
+            "whatsappStage": "entregue",
+            "protocol": [
+              "Valorizar evolução",
+              "Enviar opções",
+              "Criar follow-up humano"
+            ]
+          }
+        ],
+        "revivaV2Flows": [
+          {
+            "id": "laser",
+            "name": "Laser CO2 fracionado",
+            "category": "Pós-procedimento",
+            "status": "Ativo",
+            "window": "D+2",
+            "conversion": "31%",
+            "revenue": "R$ 8.900",
+            "health": 94,
+            "sla": "2h",
+            "owner": "Enfermagem",
+            "escalation": "Transferir para humano se houver dor intensa, febre ou foto fora do esperado.",
+            "offer": "Só sugerir retorno depois da avaliação de segurança.",
+            "template": "Oi, {nome}! Pode me enviar uma foto da pele em luz natural para eu conferir sua evolução?",
+            "variants": {
+              "followup": "Oi, {nome}! Passando novamente para acompanhar sua evolução.",
+              "human": "{nome}, vou pedir para nossa equipe assumir seu acompanhamento."
+            },
+            "quality": [
+              "Janela clínica definida",
+              "Sinais de alerta mapeados",
+              "SLA atribuído"
+            ],
+            "steps": [
+              {
+                "time": "D+2",
+                "channel": "WhatsApp",
+                "action": "Pedir foto e classificar evolução"
+              }
+            ]
+          }
+        ],
+        "revivaV2CrmProfiles": [
+          {
+            "patientId": 1,
+            "phone": "+55 65 99821-4420",
+            "ltv": "R$ 12.840",
+            "package": "Laser premium - 3/4",
+            "segment": "Pós-procedimento",
+            "status": "Cuidado ativo",
+            "timeline": [
+              "Hoje - Foto pendente"
+            ],
+            "conversation": [
+              "Sistema: Bloquear oferta até avaliação."
+            ]
+          },
+          {
+            "patientId": 2,
+            "phone": "+55 65 99211-8801",
+            "ltv": "R$ 18.200",
+            "package": "Drenagem pós-op - 8/10",
+            "segment": "Renovação quente",
+            "status": "Pacote vence",
+            "timeline": [
+              "Hoje - Renovação sugerida"
+            ],
+            "conversation": [
+              "Sistema: Enviar opções de renovação."
+            ]
+          }
+        ],
+        "revivaV2AutomationRules": [
+          {
+            "id": "renewal-hot",
+            "name": "Renovação com 2 sessões restantes",
+            "type": "Recorrência",
+            "status": "Ativa",
+            "trigger": "Pacote chega em 80% de uso",
+            "stop": "Renovação paga ou paciente recusou",
+            "owner": "Comercial",
+            "window": "3 dias",
+            "risk": "Não ofertar se houver queixa clínica aberta.",
+            "response": "Enviar opções e criar follow-up humano.",
+            "attempts": [
+              "Valorizar evolução",
+              "Enviar condição",
+              "Atendente chama"
+            ]
+          }
+        ],
+        "revivaV3AgendaSlots": [
+          {
+            "id": "laser-marina",
+            "patientId": 1,
+            "date": "Segunda, 25/05",
+            "time": "10:30",
+            "procedure": "Laser CO2 fracionado",
+            "window": "D+3",
+            "owner": "Enfermagem",
+            "channel": "Foto pendente",
+            "status": "Aguardando resposta",
+            "reason": "Acompanhamento pós-procedimento com sensibilidade relatada."
+          }
+        ],
+        "revivaV3Packages": [
+          {
+            "id": "renata-drenagem",
+            "patientId": 2,
+            "name": "Drenagem pós-operatória",
+            "used": 8,
+            "total": 10,
+            "value": "R$ 2.400",
+            "renewal": "3 dias",
+            "status": "Renovação quente",
+            "risk": "Médio",
+            "plan": "Valorizar evolução e oferecer continuidade semanal."
+          }
+        ],
+        "revivaV1ClinicSettings": {
+          "name": "Clínica Lumina",
+          "whatsapp": "+55 65 99800-2020",
+          "hours": "Segunda a sexta, 08h às 19h",
+          "policy": "Retorno em até 15 dias para toxina, D+2/D+7 para procedimentos ablativos e D+30 para bioestimuladores.",
+          "activeRole": "owner"
+        }
+      },
+      "auditLog": [
+        {
+          "id": "799effcc-784e-4636-a967-76afa21e7649",
+          "event": "whatsapp.webhook_verified",
+          "metadata": {
+            "provider": "whatsapp_cloud_api"
+          },
+          "userId": "system",
+          "createdAt": "2026-06-03T01:16:31.061Z"
+        },
+        {
+          "id": "c46a39fe-77a3-4ff9-a779-c8647711dd0f",
+          "event": "whatsapp.template_send",
+          "metadata": {
+            "patientId": 1,
+            "to": "+55 65 99821-4420",
+            "template": "pos_d2_foto",
+            "status": "queued"
+          },
+          "userId": "owner-lumina",
+          "createdAt": "2026-06-03T01:16:31.053Z"
+        },
+        {
+          "id": "6af8ea0a-7415-4e31-9966-3eb476d6d217",
+          "event": "whatsapp.test",
+          "metadata": {
+            "to": "+55 65 99821-4420",
+            "template": "retorno_confirmacao",
+            "status": "queued"
+          },
+          "userId": "owner-lumina",
+          "createdAt": "2026-06-03T01:16:31.045Z"
+        },
+        {
+          "id": "0aeef83e-8ab1-4f7f-81f4-d6a1f49cf326",
+          "event": "whatsapp.model_updated",
+          "metadata": {
+            "provider": "whatsapp_cloud_api",
+            "mode": "sandbox",
+            "templates": 6
+          },
+          "userId": "owner-lumina",
+          "createdAt": "2026-06-03T01:16:31.036Z"
+        }
+      ],
+      "whatsappModel": {
+        "provider": "whatsapp_cloud_api",
+        "mode": "sandbox",
+        "clinicName": "Cl�nica Lumina",
+        "phoneNumberId": "sandbox-phone-lumina",
+        "businessAccountId": "sandbox-waba-lumina",
+        "defaultTemplate": "retorno_confirmacao",
+        "consentRequired": true,
+        "webhookVerifyToken": "reviva_whatsapp_verify",
+        "webhookStatus": "verificado",
+        "status": "teste_ok",
+        "lastTestAt": "2026-06-03T01:16:31.045Z",
+        "tokenConfigured": false,
+        "templates": [
+          {
+            "id": "pos_d1",
+            "name": "P�s-procedimento D+1",
+            "category": "P�s-procedimento",
+            "language": "pt_BR",
+            "stage": "D+1",
+            "body": "Oi, {{nome}}! Passando para acompanhar como voc� est� nas primeiras 24h ap�s {{procedimento}}. Me conte se teve algum desconforto fora do esperado.",
+            "variables": [
+              "nome",
+              "procedimento"
+            ]
+          },
+          {
+            "id": "pos_d2_foto",
+            "name": "P�s-procedimento D+2 com foto",
+            "category": "P�s-procedimento",
+            "language": "pt_BR",
+            "stage": "D+2",
+            "body": "Oi, {{nome}}! Pode me enviar uma foto em luz natural para acompanharmos sua evolu��o com cuidado? Assim validamos se est� tudo dentro do esperado.",
+            "variables": [
+              "nome"
+            ]
+          },
+          {
+            "id": "retorno_confirmacao",
+            "name": "Confirma��o de retorno",
+            "category": "Retorno",
+            "language": "pt_BR",
+            "stage": "D+15",
+            "body": "Oi, {{nome}}! Seu retorno de {{procedimento}} j� est� na janela ideal. Tenho {{horario}} dispon�vel para avaliarmos o resultado com calma. Posso reservar?",
+            "variables": [
+              "nome",
+              "procedimento",
+              "horario"
+            ]
+          },
+          {
+            "id": "renovacao_pacote",
+            "name": "Renova��o de pacote",
+            "category": "Pacotes",
+            "language": "pt_BR",
+            "stage": "Pacote vencendo",
+            "body": "Oi, {{nome}}! Seu pacote de {{procedimento}} est� chegando ao fim e sua evolu��o est� consistente. Quer que eu te envie as op��es para manter a continuidade?",
+            "variables": [
+              "nome",
+              "procedimento"
+            ]
+          },
+          {
+            "id": "paciente_sumido",
+            "name": "Paciente sem resposta",
+            "category": "Recupera��o",
+            "language": "pt_BR",
+            "stage": "Sem resposta",
+            "body": "Oi, {{nome}}! Notei que n�o conseguimos nos falar. Queria entender como voc� est� e se posso ajudar em algo antes do pr�ximo atendimento.",
+            "variables": [
+              "nome"
+            ]
+          },
+          {
+            "id": "risco_humano",
+            "name": "Transfer�ncia humana",
+            "category": "Seguran�a cl�nica",
+            "language": "pt_BR",
+            "stage": "Risco",
+            "body": "{{nome}}, vou pedir para nossa equipe assumir seu acompanhamento agora. Queremos avaliar sua mensagem com calma antes de qualquer pr�xima orienta��o.",
+            "variables": [
+              "nome"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
