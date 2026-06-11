@@ -5940,3 +5940,400 @@ textarea:focus {
   font-weight: 700;
   text-align: center;
 }
+
+/* --- Camada comercial final: identidade Revyvas e acabamento SaaS premium --- */
+:root {
+  --ink: #1f1722;
+  --muted: #665e68;
+  --surface: #ffffff;
+  --cream: #fbf6f2;
+  --blush: #f7dde3;
+  --rose: #e17a9f;
+  --rosewood: #6b123a;
+  --plum: #2b0d26;
+  --gold: #c7a56a;
+  --line: #ebdde3;
+  --shadow-soft: 0 18px 46px rgba(43, 13, 38, 0.08);
+  --shadow-strong: 0 26px 74px rgba(43, 13, 38, 0.13);
+}
+
+body,
+.landing-body,
+.app-v2 {
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(251, 246, 242, 0.98), rgba(255, 249, 246, 0.98) 36%, rgba(247, 221, 227, 0.55));
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.app-v2 h1,
+.app-v2 h2,
+.app-v2 h3,
+.lp-title,
+.lp-section h2,
+.lp-final h2 {
+  color: var(--ink);
+  font-family: "Sora", "Inter", system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+.app-v2 .app-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.84), rgba(255, 249, 246, 0.58)),
+    linear-gradient(135deg, var(--cream), #fff);
+}
+
+.app-v2 .sidebar {
+  border-right: 1px solid rgba(235, 221, 227, 0.86);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(251, 246, 242, 0.94));
+  box-shadow: 18px 0 52px rgba(43, 13, 38, 0.06);
+}
+
+.app-v2 .brand strong,
+.landing-nav .brand-lockup strong {
+  color: var(--plum);
+  font-weight: 760;
+}
+
+.app-v2 .brand span {
+  color: #7c7079;
+  font-weight: 450;
+}
+
+.app-v2 .nav-list button {
+  min-height: 56px;
+  border-radius: 8px;
+  color: #5d5360;
+  font-weight: 550;
+}
+
+.app-v2 .nav-list button::after {
+  color: #8a7f88;
+  font-weight: 400;
+}
+
+.app-v2 .nav-list button.active {
+  border-color: rgba(107, 18, 58, 0.12);
+  background:
+    linear-gradient(90deg, rgba(247, 221, 227, 0.72), rgba(255, 255, 255, 0.9));
+  color: var(--plum);
+  box-shadow: 0 10px 26px rgba(107, 18, 58, 0.10);
+}
+
+.app-v2 .nav-list button.active::before {
+  width: 3px;
+  background: linear-gradient(180deg, var(--rose), var(--gold));
+}
+
+.app-v2 .workspace {
+  min-width: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 249, 246, 0.62), rgba(251, 246, 242, 0.84));
+}
+
+.app-v2 .topbar {
+  border: 1px solid rgba(235, 221, 227, 0.78);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 12px 34px rgba(43, 13, 38, 0.055);
+}
+
+.app-v2 .topbar h1 {
+  font-weight: 780;
+}
+
+.app-v2 .topbar .eyebrow,
+.app-v2 .panel-kicker,
+.app-v2 .eyebrow,
+.app-v2 .metric-card span,
+.app-v2 .tag,
+.app-v2 .status-pill,
+.app-v2 .message-header span {
+  color: var(--rosewood);
+  font-weight: 760;
+}
+
+.app-v2 .primary-button,
+.app-v2 .message-header button,
+.app-v2 .integration-actions button,
+.app-v2 .data-actions button,
+.app-v2 .modal-form button[type="submit"],
+.lp-primary,
+.lp-plan.featured .lp-plan-button {
+  border: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, var(--rose), var(--rosewood) 52%, var(--plum));
+  color: #fff;
+  font-weight: 650;
+  box-shadow: 0 16px 34px rgba(107, 18, 58, 0.20);
+}
+
+.app-v2 .primary-button:hover,
+.app-v2 .message-header button:hover,
+.app-v2 .integration-actions button:hover,
+.app-v2 .data-actions button:hover,
+.app-v2 .modal-form button[type="submit"]:hover,
+.lp-primary:hover,
+.lp-plan.featured .lp-plan-button:hover {
+  transform: translateY(-1px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, #d55f8c, var(--rosewood) 46%, #23071e);
+  box-shadow: 0 20px 44px rgba(107, 18, 58, 0.26);
+}
+
+.app-v2 #newFlowButton {
+  border: 1px solid rgba(107, 18, 58, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 221, 227, 0.44));
+  color: var(--rosewood);
+  font-weight: 640;
+  box-shadow: 0 10px 24px rgba(43, 13, 38, 0.06);
+}
+
+.app-v2 .secondary-button,
+.app-v2 .icon-button,
+.app-v2 .sync-pill,
+.app-v2 .role-field,
+.app-v2 .search-field,
+.app-v2 .segmented-control,
+.app-v2 .segmented-control button,
+.app-v2 input,
+.app-v2 select,
+.app-v2 textarea {
+  border-color: rgba(235, 221, 227, 0.92);
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--ink);
+}
+
+.app-v2 .secondary-button:hover,
+.app-v2 .icon-button:hover,
+.app-v2 .segmented-control button:hover,
+.app-v2 .segmented-control button.active {
+  border-color: rgba(225, 122, 159, 0.32);
+  background: rgba(247, 221, 227, 0.42);
+  color: var(--rosewood);
+}
+
+.app-v2 .studio-hero,
+.app-v2 .flows-hero,
+.app-v2 .crm-hero,
+.app-v2 .automation-hero,
+.app-v2 .agenda-hero,
+.app-v2 .packages-hero,
+.app-v2 .settings-hero,
+.app-v2 .metrics-hero,
+.app-v2 .concierge-card,
+.app-v2 .metric-card,
+.app-v2 .money-table-card,
+.app-v2 .queue-panel,
+.app-v2 .detail-panel,
+.app-v2 .flow-library,
+.app-v2 .flow-editor,
+.app-v2 .agenda-detail-panel,
+.app-v2 .package-detail-panel,
+.app-v2 .settings-card,
+.app-v2 .settings-panel,
+.app-v2 .analytics-panel,
+.app-v2 .onboarding-panel,
+.app-v2 .library-strip,
+.app-v2 .template-panel,
+.app-v2 .whatsapp-preview-panel,
+.app-v2 .quality-panel,
+.app-v2 .modal-panel {
+  border: 1px solid rgba(235, 221, 227, 0.92);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 249, 246, 0.9));
+  box-shadow: var(--shadow-soft);
+}
+
+.app-v2 .studio-hero,
+.app-v2 .flows-hero,
+.app-v2 .crm-hero,
+.app-v2 .automation-hero,
+.app-v2 .agenda-hero,
+.app-v2 .packages-hero,
+.app-v2 .settings-hero,
+.app-v2 .metrics-hero {
+  background:
+    linear-gradient(135deg, #ffffff 0%, #fff7f9 50%, rgba(247, 221, 227, 0.82) 100%);
+  box-shadow: var(--shadow-strong);
+}
+
+.app-v2 .studio-hero h2,
+.app-v2 .flows-hero h2,
+.app-v2 .crm-hero h2,
+.app-v2 .automation-hero h2,
+.app-v2 .agenda-hero h2,
+.app-v2 .packages-hero h2,
+.app-v2 .settings-hero h2,
+.app-v2 .metrics-hero h2 {
+  max-width: 780px;
+  font-weight: 820;
+  line-height: 1.02;
+}
+
+.app-v2 .money-table-card {
+  background:
+    linear-gradient(135deg, var(--plum), var(--rosewood) 58%, #b64c78);
+  box-shadow: 0 22px 62px rgba(43, 13, 38, 0.18);
+}
+
+.app-v2 .treatment-card,
+.app-v2 .care-card,
+.app-v2 .protocol-card,
+.app-v2 .message-box,
+.app-v2 .whatsapp-status-card,
+.app-v2 .detail-stats div,
+.app-v2 .flow-stat,
+.app-v2 .patient-row,
+.app-v2 .empty-state,
+.app-v2 .agenda-slot,
+.app-v2 .package-row,
+.app-v2 .settings-note,
+.app-v2 .privacy-panel,
+.app-v2 .record-card,
+.app-v2 .rule-card,
+.app-v2 .journey-builder,
+.app-v2 .whatsapp-template-card {
+  border-color: rgba(235, 221, 227, 0.92);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 10px 24px rgba(43, 13, 38, 0.045);
+}
+
+.app-v2 .patient-row:hover,
+.app-v2 .agenda-slot:hover,
+.app-v2 .package-row:hover,
+.app-v2 .rule-card:hover {
+  border-color: rgba(225, 122, 159, 0.28);
+  background: #fff;
+  box-shadow: 0 14px 32px rgba(43, 13, 38, 0.075);
+}
+
+.app-v2 .patient-row.active,
+.app-v2 .agenda-slot.active,
+.app-v2 .package-row.active,
+.app-v2 .rule-card.active,
+.app-v2 .record-card.active {
+  border-color: rgba(107, 18, 58, 0.20);
+  background:
+    linear-gradient(135deg, rgba(247, 221, 227, 0.64), rgba(255, 255, 255, 0.94));
+  box-shadow: 0 16px 36px rgba(107, 18, 58, 0.10);
+}
+
+.app-v2 .status-pill,
+.app-v2 .tag,
+.app-v2 .sync-pill {
+  border-color: rgba(225, 122, 159, 0.18);
+  background: rgba(247, 221, 227, 0.52);
+  color: var(--rosewood);
+}
+
+.app-v2 .detail-stats div,
+.app-v2 .delivery-steps span,
+.app-v2 .quick-filter-row button,
+.app-v2 .message-template-grid button {
+  min-width: 0;
+  white-space: normal;
+}
+
+.app-v2 .quick-filter-row button,
+.app-v2 .message-template-grid button {
+  border-color: rgba(235, 221, 227, 0.9);
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--ink);
+  font-weight: 580;
+}
+
+.app-v2 .quick-filter-row button:hover,
+.app-v2 .message-template-grid button:hover {
+  border-color: rgba(225, 122, 159, 0.36);
+  background: rgba(247, 221, 227, 0.48);
+  color: var(--rosewood);
+}
+
+.app-v2 .login-gate {
+  background:
+    linear-gradient(135deg, rgba(251, 246, 242, 0.98), rgba(247, 221, 227, 0.62)),
+    #fff;
+}
+
+.app-v2 .login-card,
+.login-card {
+  border-radius: 8px !important;
+  border: 1px solid rgba(235, 221, 227, 0.9);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 28px 76px rgba(43, 13, 38, 0.16);
+}
+
+.landing-body .lp-header,
+.landing-body .lp-card,
+.landing-body .lp-plan,
+.landing-body .lp-faq article,
+.landing-body .lp-lead-form,
+.landing-body .demo-request-panel {
+  border-color: rgba(235, 221, 227, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 16px 42px rgba(43, 13, 38, 0.06);
+}
+
+.landing-body .lp-badge,
+.landing-body .lp-pill,
+.landing-body .lp-mini-card {
+  border-color: rgba(225, 122, 159, 0.22);
+  background: rgba(247, 221, 227, 0.36);
+  color: var(--rosewood);
+}
+
+@media (max-width: 980px) {
+  .app-v2 .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .app-v2 .topbar {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-v2 .workspace {
+    padding: 10px;
+    overflow-x: hidden;
+  }
+
+  .app-v2 .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid rgba(235, 221, 227, 0.92);
+  }
+
+  .app-v2 .nav-list button {
+    flex-basis: 124px;
+    min-height: 44px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+  }
+
+  .app-v2 .topbar {
+    border-radius: 8px;
+  }
+
+  .app-v2 .topbar-actions {
+    overflow-x: auto;
+  }
+
+  .app-v2 .studio-hero h2,
+  .app-v2 .flows-hero h2,
+  .app-v2 .crm-hero h2,
+  .app-v2 .automation-hero h2,
+  .app-v2 .agenda-hero h2,
+  .app-v2 .packages-hero h2,
+  .app-v2 .settings-hero h2,
+  .app-v2 .metrics-hero h2 {
+    font-size: clamp(1.82rem, 9vw, 2.55rem);
+  }
+}

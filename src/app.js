@@ -746,6 +746,7 @@ const modalForm = document.querySelector("#modalForm");
 const closeModalButton = document.querySelector("#closeModalButton");
 const modalButtons = document.querySelectorAll("[data-modal]");
 const logoutButton = document.querySelector("#logoutButton");
+const appShell = document.querySelector(".app-shell");
 const demoExperience = document.body.classList.contains("demo-v2");
 const apiEnabled = location.protocol !== "file:" && !demoExperience;
 let apiSession = null;
@@ -835,8 +836,15 @@ function renderAll() {
   renderMetrics();
 }
 
+function setAuthenticatedShell(isAuthenticated) {
+  if (!apiEnabled || !appShell) return;
+  appShell.hidden = !isAuthenticated;
+}
+
 function showLoginGate(errorMessage = "") {
-  if (!apiEnabled || document.querySelector("#loginGate")) return;
+  if (!apiEnabled) return;
+  setAuthenticatedShell(false);
+  if (document.querySelector("#loginGate")) return;
   const gate = document.createElement("section");
   gate.className = "login-gate";
   gate.id = "loginGate";
@@ -868,6 +876,7 @@ function showLoginGate(errorMessage = "") {
       });
       gate.remove();
       await hydrateFromApi();
+      setAuthenticatedShell(true);
       showToast("Sessão iniciada com segurança.");
     } catch (error) {
       gate.querySelector("#loginError").textContent = error.message;
@@ -893,6 +902,8 @@ async function hydrateFromApi() {
       saveState("revivaWhatsappModel", whatsappModel);
     }
     apiHydrated = true;
+    document.querySelector("#loginGate")?.remove();
+    setAuthenticatedShell(true);
     renderAll();
     if (syncStatus) syncStatus.textContent = "Dados prontos";
   } catch {
@@ -1948,7 +1959,7 @@ document.addEventListener("click", (event) => {
     const patient = patientById(item.patientId);
     item.status = "Follow-up";
     item.plan = "Criar novo contato em 48h com mensagem de continuidade.";
-    patient.next = "Follow-up de renovacao em 48h";
+    patient.next = "Follow-up de renovação em 48h";
     addTimeline(patient.id, "Hoje - Follow-up de pacote criado");
     saveCoreState();
     selectPackage(item.id);
