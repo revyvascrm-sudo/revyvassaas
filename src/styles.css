@@ -6390,3 +6390,28 @@ body,
     margin-top: 20px;
   }
 }
+
+/* --- Perfis simplificados para a realidade da clínica --- */
+body.app-v2[data-active-role="team"] .nav-list button[data-view-target="metrics"],
+body.app-v2[data-active-role="team"] .nav-list button[data-view-target="settings"],
+body.app-v2[data-active-role="professional"] .nav-list button[data-view-target="packages"],
+body.app-v2[data-active-role="professional"] .nav-list button[data-view-target="metrics"],
+body.app-v2[data-active-role="professional"] .nav-list button[data-view-target="settings"] {
+  display: none;
+}
+
+body.app-v2[data-active-role="team"] .money-table-card,
+body.app-v2[data-active-role="professional"] .money-table-card {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 249, 246, 0.9));
+  color: var(--ink);
+}
+
+body.app-v2[data-active-role="team"] .money-table-card .eyebrow,
+body.app-v2[data-active-role="team"] .money-table-card h3,
+body.app-v2[data-active-role="team"] .money-table-card p,
+body.app-v2[data-active-role="professional"] .money-table-card .eyebrow,
+body.app-v2[data-active-role="professional"] .money-table-card h3,
+body.app-v2[data-active-role="professional"] .money-table-card p {
+  color: var(--ink);
+}

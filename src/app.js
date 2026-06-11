@@ -454,10 +454,24 @@ let clinicSettings = loadState("revivaV1ClinicSettings", {
 });
 
 const roleProfiles = [
-  { id: "owner", label: "Gestora", access: "Receita, equipe, ajustes e visão completa" },
-  { id: "reception", label: "Recepção", access: "Agenda, confirmação de retorno e cadastro" },
-  { id: "commercial", label: "Comercial", access: "Renovação de pacotes e recuperação de receita" },
-  { id: "clinical", label: "Clínico", access: "Pós-procedimento, risco e transferência humana" },
+  {
+    id: "owner",
+    label: "Gestora",
+    access: "Acesso completo: receita, ajustes, integrações, dados e equipe.",
+    headline: "Painel da gestora",
+  },
+  {
+    id: "team",
+    label: "Equipe",
+    access: "Operação diária: pacientes, mensagens, agenda, pacotes e follow-up.",
+    headline: "Painel da equipe",
+  },
+  {
+    id: "professional",
+    label: "Profissional",
+    access: "Acesso opcional: cuidado clínico, protocolos, agenda e histórico da paciente.",
+    headline: "Painel profissional",
+  },
 ];
 
 const whatsappTemplates = [
@@ -836,6 +850,43 @@ function renderAll() {
   renderMetrics();
 }
 
+function normalizeRole(role) {
+  if (role === "reception" || role === "commercial") return "team";
+  if (role === "clinical") return "professional";
+  return roleProfiles.some((profile) => profile.id === role) ? role : "owner";
+}
+
+function activeRoleProfile() {
+  clinicSettings.activeRole = normalizeRole(clinicSettings.activeRole);
+  return roleProfiles.find((profile) => profile.id === clinicSettings.activeRole) || roleProfiles[0];
+}
+
+function activateDefaultViewIfNeeded() {
+  const activeView = document.querySelector(".view.active")?.dataset.view;
+  const activeButton = document.querySelector(`.nav-list button[data-view-target="${activeView}"]`);
+  if (activeButton && getComputedStyle(activeButton).display !== "none") return;
+  document.querySelector('.nav-list button[data-view-target="dashboard"]')?.click();
+}
+
+function applyRoleExperience() {
+  const role = activeRoleProfile();
+  document.body.dataset.activeRole = role.id;
+  const title = document.querySelector(".topbar h1");
+  const newFlowLabel = document.querySelector("#newFlowButton");
+  if (title) title.textContent = role.headline;
+  const setNewFlowButton = (text) => {
+    if (newFlowLabel) newFlowLabel.innerHTML = `<span class="button-icon plus-icon"></span>${text}`;
+  };
+  if (role.id === "team") {
+    setNewFlowButton("Registrar ação");
+  } else if (role.id === "professional") {
+    setNewFlowButton("Criar cuidado");
+  } else {
+    setNewFlowButton("Criar protocolo");
+  }
+  activateDefaultViewIfNeeded();
+}
+
 function setAuthenticatedShell(isAuthenticated) {
   if (!apiEnabled || !appShell) return;
   appShell.hidden = !isAuthenticated;
@@ -992,6 +1043,7 @@ function appMetrics() {
 }
 
 function updateShell() {
+  clinicSettings.activeRole = normalizeRole(clinicSettings.activeRole);
   document.querySelectorAll(".brand span, #waPreviewClinic").forEach((item) => {
     item.textContent = clinicSettings.name;
   });
@@ -1004,6 +1056,7 @@ function updateShell() {
     }).format(new Date());
   }
   if (roleSelect) roleSelect.value = clinicSettings.activeRole;
+  applyRoleExperience();
 }
 
 function populatePatientSelects() {
@@ -1984,10 +2037,11 @@ logoutButton?.addEventListener("click", async () => {
 });
 
 roleSelect?.addEventListener("change", () => {
-  clinicSettings.activeRole = roleSelect.value;
+  clinicSettings.activeRole = normalizeRole(roleSelect.value);
   saveState("revivaV1ClinicSettings", clinicSettings);
+  updateShell();
   renderSettings();
-  showToast("Configuração salva. A operação da clínica foi atualizada.");
+  showToast("Perfil atualizado para a rotina da clínica.");
 });
 
 saveOnboardingButton?.addEventListener("click", () => {
@@ -2818,6 +2872,7 @@ function polishStaticInterface() {
   setText(".settings-grid .settings-panel:nth-of-type(6) .eyebrow", "Qualidade");
   setText(".settings-grid .settings-panel:nth-of-type(6) h3", "Checklist de opera\u00e7\u00e3o");
   setText(".settings-grid .settings-panel:nth-of-type(7) h3", "Seguran\u00e7a e consentimentos");
+  applyRoleExperience();
 }
 
 polishStaticInterface();
