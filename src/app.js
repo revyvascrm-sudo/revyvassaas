@@ -1471,6 +1471,7 @@ function selectAgendaSlot(id) {
   const slot = agendaSlots.find((item) => item.id === id) || agendaSlots[0];
   if (!slot) return;
   const patient = patients.find((item) => item.id === slot.patientId);
+  if (!slot.status) slot.status = "Aguardando resposta";
 
   agendaPatientName.textContent = patient?.name || "Paciente";
   agendaProcedure.textContent = slot.procedure;
@@ -1481,6 +1482,7 @@ function selectAgendaSlot(id) {
   agendaChannel.textContent = slot.channel;
   agendaReason.textContent = slot.reason;
   agendaStatusSelect.value = slot.status;
+  if (!agendaStatusSelect.value) agendaStatusSelect.value = "Aguardando resposta";
   agendaOwnerSelect.value = slot.owner;
   agendaDateInput.value = slot.date;
   agendaTimeInput.value = slot.time;
@@ -2278,7 +2280,7 @@ sendAppointmentButton.addEventListener("click", () => {
 saveAppointmentButton?.addEventListener("click", () => {
   const slot = agendaSlots.find((item) => item.id === selectedSlotId);
   const patient = patientById(slot.patientId);
-  slot.status = agendaStatusSelect.value;
+  slot.status = agendaStatusSelect.value || slot.status || "Aguardando resposta";
   slot.owner = agendaOwnerSelect.value;
   slot.date = agendaDateInput.value || slot.date;
   slot.time = agendaTimeInput.value || slot.time;
