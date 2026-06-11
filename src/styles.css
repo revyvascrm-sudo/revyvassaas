@@ -6337,3 +6337,56 @@ body,
     font-size: clamp(1.82rem, 9vw, 2.55rem);
   }
 }
+
+/* --- Correção de respiro: heros e áreas comerciais nunca colados na borda --- */
+.app-v2 .studio-hero,
+.app-v2 .flows-hero,
+.app-v2 .crm-hero,
+.app-v2 .automation-hero,
+.app-v2 .agenda-hero,
+.app-v2 .packages-hero,
+.app-v2 .settings-hero,
+.app-v2 .metrics-hero {
+  padding: clamp(30px, 3.2vw, 46px) !important;
+}
+
+.app-v2 .studio-hero {
+  gap: clamp(24px, 3vw, 44px) !important;
+  align-items: center;
+}
+
+.app-v2 .hero-copy {
+  min-width: 0;
+}
+
+.app-v2 .hero-copy > *:first-child,
+.app-v2 .flows-hero > *:first-child,
+.app-v2 .crm-hero > *:first-child,
+.app-v2 .automation-hero > *:first-child,
+.app-v2 .agenda-hero > *:first-child,
+.app-v2 .packages-hero > *:first-child,
+.app-v2 .settings-hero > *:first-child,
+.app-v2 .metrics-hero > *:first-child {
+  margin-top: 0;
+}
+
+.app-v2 .hero-actions {
+  margin-top: 26px;
+}
+
+@media (max-width: 760px) {
+  .app-v2 .studio-hero,
+  .app-v2 .flows-hero,
+  .app-v2 .crm-hero,
+  .app-v2 .automation-hero,
+  .app-v2 .agenda-hero,
+  .app-v2 .packages-hero,
+  .app-v2 .settings-hero,
+  .app-v2 .metrics-hero {
+    padding: 26px !important;
+  }
+
+  .app-v2 .hero-actions {
+    margin-top: 20px;
+  }
+}
